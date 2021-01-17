@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<main id="main">
+   <!-- ======= About Us Section ======= -->
+
+   {% if not user.is_authenticated %}
+   <section id="about" class="about">
+     <div class="container">
+       <div class="section-title">
+         <h2>To Get Started:</h2>
+       </div>
+
+       <div class="row">
+         <!-- <div class="col-lg-6 order-1 order-lg-2"> -->
+           <!-- <img src="assets/img/about-img.jpg" class="img-fluid" alt=""> -->
+         </div>
+         <div class="col-md-6 offset-md-3">
+         <div class="col-lg-10 col-md-12 order-lg mx-auto">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="icofont-check-circled"></i> Create an Account <a href="{% url 'register' %}">here</a>.</li>
+            <li class="list-group-item"><i class="icofont-check-circled"></i> Already have an Account <a href="{% url 'login' %}">Login.</a></li>
+            <li class="list-group-item"><i class="icofont-check-circled"></i> Get your Token.</li>
+            <li class="list-group-item"><i class="icofont-check-circled"></i> Build.</li>
+            <li class="list-group-item"></li>
+          </ul>
+         </div>
+       </div>
+
+     </div>
+   </section><!-- End About Us Section -->
+    {% else %}
+        <section id="about" class="about">
+          <div class="container">
+            <div class="section-title">
+              <h2>To Get Started:</h2>
+            </div>
+
+            <div class="row">
+              <!-- <div class="col-lg-6 order-1 order-lg-2"> -->
+               <!--  <img src="assets/img/about-img.jpg" class="img-fluid" alt=""> -->
+              </div>
+              <div class="col-md-6 offset-md-3">
+              <div class="col-lg-10 col-md-12 order-lg mx-auto">
+              <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="icofont-check-circled"></i>  Create an Account here. <span> &#10003;</span></li>
+            <li class="list-group-item"><i class="icofont-check-circled"></i> Log in your Account. &#10003;</li>
+            <li class="list-group-item"><i class="icofont-check-circled"></i> Get your Token <a href="{% url 'profile' %}">here.</a></li>
+            <li class="list-group-item"><i class="icofont-check-circled"></i> Build.</li>
+          </ul>
+              </div>
+            </div>
+
+          </div>
+        </section>
+   {% endif %}
+<div class="container">
+<div class="col-md-5 border border-info" >
+  <pre><code class="python">
+import requests
+import json 
+
+url = 'http://127.0.0.1:8000/api/v2/'
+page = requests.get(url)
+
+try:
+  api_data = json.loads(page.content)
+
+except Exception as e:
+  api_data = 'Error'
+
+print(api_data)
+
+
+  </code></pre>
+</div>
+</div>
+
+<!-- ======= Our Team Section ======= -->
+
+	<section id="team" class="team">
+		<div class="section-title">
+          <h2>What we offer:</h2>
+        </div>
+
+        <div class="container px-lg-5  text-center">
+  <div class="row mx-lg-n5">
+    <div class="col py-3 px-lg-5 border border-light"><h1>LATEST DATA</h1>
+            <span>Data are obtained daily from verified source.</span></div>
+    <div class="col py-3 px-lg-5 border border-light"><h1>FREE</h1>
+            <span>The Data is free to get, and will continue to be free.</span></div></div>
+     <div class="row mx-lg-n5">
+    <div class="col py-3 px-lg-5 border border-light"><h1>JSON</h1>
+            <p>JSON syntax, very easy to use.</p></div>
+    <div class="col py-3 px-lg-5 border border-light"><h1>BUILD</h1>
+            	<span>Dashboards, Mobile Apps, and Web Apps.</span></div>
+  </div>
+</div>
+  
+	</section><!-- End Our Team Section -->
+    
+    {% include 'contact.html' %}
+</main>
+{% endblock %}

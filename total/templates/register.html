@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}<br>
+<div class="container-fluid">
+   <div class="section-title"><h2>Registration Page</h2></div>
+      
+    <div class="form-group">
+      <div class="col-md-8 offset-md-2">
+      <div class="col-md-6 offset-md-3">
+    <form method="POST">
+
+        {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <b>{{ form.errors }}</b>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>   
+      {% endif %}
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="btn-class">
+        <input type="submit" class="btn-get-started2" value="Register">
+      </div>
+    </form><hr>
+    <p>Already a member, <a href="{% url 'login' %}">Log In</a></p>
+</div></div></div></div>
+{% endblock content%}

@@ -1,0 +1,5 @@
+#Ignore environmental variables i.e .env
+.env
+*.sqlite3
+covid19/__pycache__
+total/__pycache__
